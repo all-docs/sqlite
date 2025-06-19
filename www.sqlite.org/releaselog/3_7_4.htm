@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>SQLite Release 3.7.4 On 2010-12-07</title>
+<!-- path=../ -->
+</head>
+<body>
+
+<script>
+function toggle_div(nm) {
+var w = document.getElementById(nm);
+if( w.style.display=="block" ){
+w.style.display = "none";
+}else{
+w.style.display = "block";
+}
+}
+function toggle_search() {
+var w = document.getElementById("searchmenu");
+if( w.style.display=="block" ){
+w.style.display = "none";
+} else {
+w.style.display = "block";
+setTimeout(function(){
+document.getElementById("searchbox").focus()
+}, 30);
+}
+}
+function div_off(nm){document.getElementById(nm).style.display="none";}
+window.onbeforeunload = function(e){div_off("submenu");}
+/* Disable the Search feature if we are not operating from CGI, since */
+/* Search is accomplished using CGI and will not work without it. */
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
+document.getElementById("search_menubutton").style.display = "none";
+}
+/* Used by the Hide/Show button beside syntax diagrams, to toggle the */
+function hideorshow(btn,obj){
+var x = document.getElementById(obj);
+var b = document.getElementById(btn);
+if( x.style.display!='none' ){
+x.style.display = 'none';
+b.innerHTML='show';
+}else{
+x.style.display = '';
+b.innerHTML='hide';
+}
+return false;
+}
+var antiRobot = 0;
+function antiRobotGo(){
+if( antiRobot!=3 ) return;
+antiRobot = 7;
+var j = document.getElementById("mtimelink");
+if(j && j.hasAttribute("data-href")) j.href=j.getAttribute("data-href");
+}
+function antiRobotDefense(){
+document.body.onmousedown=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousedown=null;
+}
+document.body.onmousemove=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousemove=null;
+}
+setTimeout(function(){
+antiRobot |= 1;
+antiRobotGo();
+}, 100)
+antiRobotGo();
+}
+antiRobotDefense();
+</script>
+<h2>SQLite Release 3.7.4 On 2010-12-07</h2><p></p><ol class="lessindent">
+<li> Added the <a href="../c3ref/blob_reopen.html">sqlite3_blob_reopen()</a> interface to allow an existing
+     <a href="../c3ref/blob.html">sqlite3_blob</a> object to be rebound to a new row.
+</li><li> Use the new <a href="../c3ref/blob_reopen.html">sqlite3_blob_reopen()</a> interface to improve the performance
+     of FTS.
+</li><li> <a href="../c3ref/vfs.html">VFSes</a> that do not support shared memory are allowed
+     to access <a href="../wal.html">WAL</a> databases if <a href="../pragma.html#pragma_locking_mode">PRAGMA locking_mode</a> is set to EXCLUSIVE.
+</li><li> Enhancements to <a href="../eqp.html">EXPLAIN QUERY PLAN</a>.
+</li><li> Added the <a href="../c3ref/stmt_readonly.html">sqlite3_stmt_readonly()</a> interface.
+</li><li> Added <a href="../pragma.html#pragma_checkpoint_fullfsync">PRAGMA checkpoint_fullfsync</a>.
+</li><li> Added the <a href="../c3ref/c_fcntl_begin_atomic_write.html#sqlitefcntlfilepointer">SQLITE_FCNTL_FILE_POINTER</a> option
+     to <a href="../c3ref/file_control.html">sqlite3_file_control()</a>.
+</li><li> Added support for <a href="../fts3.html#fts4">FTS4</a> and enhancements
+     to the FTS <a href="../fts3.html#matchinfo">matchinfo()</a> function.
+</li><li> Added the test_superlock.c module which provides example
+     code for obtaining an exclusive lock to a rollback or WAL database.
+</li><li> Added the test_multiplex.c module which provides
+     an example VFS that provides multiplexing (sharding)
+     of a DB, splitting it over multiple files of fixed size.
+</li><li> A <a href="https://sqlite.org/src/info/80ba201079">very obscure bug</a>
+     associated with the <a href="../optoverview.html#or_opt">or optimization</a> was fixed.
+
+</li></ol><p></p>
+
+      <p>A <a href="../changes.html">complete list of SQLite releases</a>
+      in a single page and a <a href="../chronology.html">chronology</a> are both also available.
+      A detailed history of every
+      check-in is available at
+      <a href="https://sqlite.org/src/timeline">
+      SQLite version control site</a>.</p>
+    
+
+</body></html>

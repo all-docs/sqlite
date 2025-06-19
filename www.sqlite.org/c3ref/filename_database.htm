@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>Translate filenames</title>
+<!-- path=../ -->
+</head>
+<body>
+
+<script>
+function toggle_div(nm) {
+var w = document.getElementById(nm);
+if( w.style.display=="block" ){
+w.style.display = "none";
+}else{
+w.style.display = "block";
+}
+}
+function toggle_search() {
+var w = document.getElementById("searchmenu");
+if( w.style.display=="block" ){
+w.style.display = "none";
+} else {
+w.style.display = "block";
+setTimeout(function(){
+document.getElementById("searchbox").focus()
+}, 30);
+}
+}
+function div_off(nm){document.getElementById(nm).style.display="none";}
+window.onbeforeunload = function(e){div_off("submenu");}
+/* Disable the Search feature if we are not operating from CGI, since */
+/* Search is accomplished using CGI and will not work without it. */
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
+document.getElementById("search_menubutton").style.display = "none";
+}
+/* Used by the Hide/Show button beside syntax diagrams, to toggle the */
+function hideorshow(btn,obj){
+var x = document.getElementById(obj);
+var b = document.getElementById(btn);
+if( x.style.display!='none' ){
+x.style.display = 'none';
+b.innerHTML='show';
+}else{
+x.style.display = '';
+b.innerHTML='hide';
+}
+return false;
+}
+var antiRobot = 0;
+function antiRobotGo(){
+if( antiRobot!=3 ) return;
+antiRobot = 7;
+var j = document.getElementById("mtimelink");
+if(j && j.hasAttribute("data-href")) j.href=j.getAttribute("data-href");
+}
+function antiRobotDefense(){
+document.body.onmousedown=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousedown=null;
+}
+document.body.onmousemove=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousemove=null;
+}
+setTimeout(function(){
+antiRobot |= 1;
+antiRobotGo();
+}, 100)
+antiRobotGo();
+}
+antiRobotDefense();
+</script>
+<!-- keywords: sqlite3_filename_database sqlite3_filename_journal sqlite3_filename_wal -->
+
+<blockquote><pre>const char *sqlite3_filename_database(sqlite3_filename);
+const char *sqlite3_filename_journal(sqlite3_filename);
+const char *sqlite3_filename_wal(sqlite3_filename);
+</pre></blockquote>
+<p>
+These routines are available to <a href="../vfs.html">custom VFS implementations</a> for
+translating filenames between the main database file, the journal file,
+and the WAL file.</p>
+
+<p>If F is the name of an sqlite database file, journal file, or WAL file
+passed by the SQLite core into the VFS, then sqlite3_filename_database(F)
+returns the name of the corresponding database file.</p>
+
+<p>If F is the name of an sqlite database file, journal file, or WAL file
+passed by the SQLite core into the VFS, or if F is a database filename
+obtained from <a href="db_filename.htm">sqlite3_db_filename()</a>, then sqlite3_filename_journal(F)
+returns the name of the corresponding rollback journal file.</p>
+
+<p>If F is the name of an sqlite database file, journal file, or WAL file
+that was passed by the SQLite core into the VFS, or if F is a database
+filename obtained from <a href="db_filename.htm">sqlite3_db_filename()</a>, then
+sqlite3_filename_wal(F) returns the name of the corresponding
+WAL file.</p>
+
+<p>In all of the above, if F is not the name of a database, journal or WAL
+filename passed into the VFS from the SQLite core and F is not the
+return value from <a href="db_filename.htm">sqlite3_db_filename()</a>, then the result is
+undefined and is likely a memory access violation.
+</p><p>See also lists of
+  <a href="objlist.htm">Objects</a>,
+  <a href="constlist.htm">Constants</a>, and
+  <a href="funclist.htm">Functions</a>.</p>
+
+</body></html>

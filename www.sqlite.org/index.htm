@@ -1,0 +1,247 @@
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>SQLite Home Page</title>
+<!-- path= -->
+</head>
+<body>
+
+<script>
+function toggle_div(nm) {
+var w = document.getElementById(nm);
+if( w.style.display=="block" ){
+w.style.display = "none";
+}else{
+w.style.display = "block";
+}
+}
+function toggle_search() {
+var w = document.getElementById("searchmenu");
+if( w.style.display=="block" ){
+w.style.display = "none";
+} else {
+w.style.display = "block";
+setTimeout(function(){
+document.getElementById("searchbox").focus()
+}, 30);
+}
+}
+function div_off(nm){document.getElementById(nm).style.display="none";}
+window.onbeforeunload = function(e){div_off("submenu");}
+/* Disable the Search feature if we are not operating from CGI, since */
+/* Search is accomplished using CGI and will not work without it. */
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
+document.getElementById("search_menubutton").style.display = "none";
+}
+/* Used by the Hide/Show button beside syntax diagrams, to toggle the */
+function hideorshow(btn,obj){
+var x = document.getElementById(obj);
+var b = document.getElementById(btn);
+if( x.style.display!='none' ){
+x.style.display = 'none';
+b.innerHTML='show';
+}else{
+x.style.display = '';
+b.innerHTML='hide';
+}
+return false;
+}
+var antiRobot = 0;
+function antiRobotGo(){
+if( antiRobot!=3 ) return;
+antiRobot = 7;
+var j = document.getElementById("mtimelink");
+if(j && j.hasAttribute("data-href")) j.href=j.getAttribute("data-href");
+}
+function antiRobotDefense(){
+document.body.onmousedown=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousedown=null;
+}
+document.body.onmousemove=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousemove=null;
+}
+setTimeout(function(){
+antiRobot |= 1;
+antiRobotGo();
+}, 100)
+antiRobotGo();
+}
+antiRobotDefense();
+</script>
+
+
+<div class="rightsidebar desktoponly border2px">
+<h3 align="center">Common Links</h3>
+<ul class="nounderline">
+<li> <a href="features.htm">Features</a> </li>
+<li> <a href="whentouse.htm">When to use SQLite</a> </li>
+<li> <a href="quickstart.htm">Getting Started</a> </li>
+<li> <a href="https://sqlite.org/fiddle">Try it live!</a></li><a href="https://sqlite.org/fiddle">
+</a><li><a href="https://sqlite.org/fiddle"> </a><a href="lang.htm">SQL Syntax</a>
+<ul>
+<li> <a href="pragma.htm">Pragmas</a>
+</li><li> <a href="lang_corefunc.htm">SQL functions</a>
+</li><li> <a href="lang_datefunc.htm">Date &amp; time functions</a>
+</li><li> <a href="lang_aggfunc.htm">Aggregate functions</a>
+</li><li> <a href="windowfunctions.htm">Window functions</a>
+</li><li> <a href="lang_mathfunc.htm">Math functions</a>
+</li><li> <a href="json1.htm">JSON functions</a>
+</li></ul>
+</li>
+<li> <a href="c3ref\intro.htm">C/C++ Interface Spec</a>
+<ul>
+<li> <a href="cintro.htm">Introduction</a>
+</li><li> <a href="c3ref\funclist.htm">List of C-language APIs</a>
+</li></ul>
+</li>
+<li> <a href="tclsqlite.htm">The TCL Interface Spec</a>
+</li><li> <a href="quirks.htm">Quirks and Gotchas</a> </li>
+<li> <a href="faq.htm">Frequently Asked Questions</a> </li>
+<li> <a href="https://www.sqlite.org/src/timeline">Commit History</a> </li>
+<li> <a href="chronology.htm">Prior Releases</a>
+</li><li> <a href="https://www.sqlite.org/src/wiki?name=Bug+Reports">Bugs</a> </li>
+<li> <a href="news.htm">News</a> </li>
+</ul>
+
+</div>
+
+<h3>What Is SQLite?</h3>
+
+<p>SQLite is a C-language library that implements a
+<a href="footprint.htm">small</a>,
+<a href="fasterthanfs.htm">fast</a>,
+<a href="selfcontained.htm">self-contained</a>,
+<a href="hirely.htm">high-reliability</a>,
+<a href="fullsql.htm">full-featured</a>,
+SQL database engine.
+SQLite is the <a href="mostdeployed.htm">most used</a> database engine in the world.
+SQLite is built into all mobile phones and most computers and
+comes bundled inside countless other applications that people
+use every day.
+<a href="about.htm">More Information...</a>
+
+</p><p>
+The SQLite <a href="fileformat2.htm">file format</a> is stable, cross-platform, and
+backwards compatible and the developers pledge to keep it
+that way <a href="lts.htm">through the year 2050</a>.  SQLite database
+files are commonly used as containers to transfer rich
+content between systems
+<a href="aff_short.htm">[1]</a>
+<a href="sqlar.htm">[2]</a>
+<a href="appfileformat.htm">[3]</a>
+and as a long-term archival format
+for data
+<a href="locrsf.htm">[4]</a>.
+There are over 1 trillion (1e12)
+SQLite databases in active use
+<a href="mostdeployed.htm">[5]</a>.
+
+</p><p>
+SQLite <a href="https://sqlite.org/src">source code</a>
+is in the <a href="copyright.htm">public-domain</a> and is free to
+everyone to use for any purpose.
+
+</p><h3>Latest Release</h3>
+<a href="releaselog\3_50_1.htm">Version 3.50.1</a> (2025-06-06).
+<a class="button" href="download.htm">Download</a>
+<a class="button" href="chronology.htm">Prior Releases</a>
+
+<div class="mobileonly">
+<h3>Common Links</h3>
+<ul class="nounderline">
+<li> <a href="features.htm">Features</a> </li>
+<li> <a href="whentouse.htm">When to use SQLite</a> </li>
+<li> <a href="quickstart.htm">Getting Started</a> </li>
+<li> <a href="https://sqlite.org/fiddle">Try it live!</a></li><a href="https://sqlite.org/fiddle">
+</a><li><a href="https://sqlite.org/fiddle"> </a><a href="lang.htm">SQL Syntax</a>
+<ul>
+<li> <a href="pragma.htm">Pragmas</a>
+</li><li> <a href="lang_corefunc.htm">SQL functions</a>
+</li><li> <a href="lang_datefunc.htm">Date &amp; time functions</a>
+</li><li> <a href="lang_aggfunc.htm">Aggregate functions</a>
+</li><li> <a href="windowfunctions.htm">Window functions</a>
+</li><li> <a href="lang_mathfunc.htm">Math functions</a>
+</li><li> <a href="json1.htm">JSON functions</a>
+</li></ul>
+</li>
+<li> <a href="c3ref\intro.htm">C/C++ Interface Spec</a>
+<ul>
+<li> <a href="cintro.htm">Introduction</a>
+</li><li> <a href="c3ref\funclist.htm">List of C-language APIs</a>
+</li></ul>
+</li>
+<li> <a href="tclsqlite.htm">The TCL Interface Spec</a>
+</li><li> <a href="quirks.htm">Quirks and Gotchas</a> </li>
+<li> <a href="faq.htm">Frequently Asked Questions</a> </li>
+<li> <a href="https://www.sqlite.org/src/timeline">Commit History</a> </li>
+<li> <a href="chronology.htm">Prior Releases</a>
+</li><li> <a href="https://www.sqlite.org/src/wiki?name=Bug+Reports">Bugs</a> </li>
+<li> <a href="news.htm">News</a> </li>
+</ul>
+
+</div>
+
+<br clear="both">
+<hr class="xhr">
+<p>Ongoing development and support of SQLite is made possible in part
+by <a href="consortium.htm">SQLite Consortium</a> members, including:</p>
+<a name="consortium_members"></a>
+<style>
+#sponsors {
+  margin:auto;
+  width:80%;
+}
+.onesponsor a img {
+  width:200px;
+  max-width:200px;
+  padding:1ex;
+}
+</style>
+<div id="sponsors"></div>
+<script>
+  var sponsors = [{
+    "name":"Bloomberg",
+    "href":"https://www.techatbloomberg.com/",
+    "src":"bloomberg.png",
+    "wx":0
+  },{
+    "name":"Bentley",
+    "href":"https://www.bentley.com/",
+    "src":"bentley.gif",
+    "wx":0
+  },{
+    "name":"NDS",
+    "href":"http://www.nds-association.org/",
+    "src":"nds.png",
+    "wx":0
+  },{
+    "name":"Expensify",
+    "href":"https://www.expensify.com/",
+    "src":"expensify.png",
+    "wx":225,
+    "hx":32
+  }];
+
+  for(var i=0; i<sponsors.length; i++){sponsors[i].idx = Math.random();}
+  sponsors.sort(function(a,b){return a.idx-b.idx});
+  var h = "";
+  for(var i=0; i<sponsors.length; i++){
+    h += "<span class='onesponsor'><a href='";
+    h += sponsors[i].href;
+    h += "'><img src='images/foreignlogos/";
+    h += sponsors[i].src;
+    h += "'></a></span>\n";
+  }
+  document.getElementById("sponsors").innerHTML = h;
+
+</script>
+<br clear="both">
+<hr class="xhr">
+<p align="center"><small><i>This page last modified on  <a href="https://sqlite.org/docsrc/honeypot" id="mtimelink" data-href="https://sqlite.org/docsrc/finfo/pages/index.in?m=6803d57cd8">2025-06-12 09:10:23</a> UTC </i></small></p>
+
+</body></html>

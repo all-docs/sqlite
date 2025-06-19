@@ -1,0 +1,307 @@
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>Alphabetical List Of SQLite Documents</title>
+<!-- path= -->
+</head>
+<body>
+
+<script>
+function toggle_div(nm) {
+var w = document.getElementById(nm);
+if( w.style.display=="block" ){
+w.style.display = "none";
+}else{
+w.style.display = "block";
+}
+}
+function toggle_search() {
+var w = document.getElementById("searchmenu");
+if( w.style.display=="block" ){
+w.style.display = "none";
+} else {
+w.style.display = "block";
+setTimeout(function(){
+document.getElementById("searchbox").focus()
+}, 30);
+}
+}
+function div_off(nm){document.getElementById(nm).style.display="none";}
+window.onbeforeunload = function(e){div_off("submenu");}
+/* Disable the Search feature if we are not operating from CGI, since */
+/* Search is accomplished using CGI and will not work without it. */
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
+document.getElementById("search_menubutton").style.display = "none";
+}
+/* Used by the Hide/Show button beside syntax diagrams, to toggle the */
+function hideorshow(btn,obj){
+var x = document.getElementById(obj);
+var b = document.getElementById(btn);
+if( x.style.display!='none' ){
+x.style.display = 'none';
+b.innerHTML='show';
+}else{
+x.style.display = '';
+b.innerHTML='hide';
+}
+return false;
+}
+var antiRobot = 0;
+function antiRobotGo(){
+if( antiRobot!=3 ) return;
+antiRobot = 7;
+var j = document.getElementById("mtimelink");
+if(j && j.hasAttribute("data-href")) j.href=j.getAttribute("data-href");
+}
+function antiRobotDefense(){
+document.body.onmousedown=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousedown=null;
+}
+document.body.onmousemove=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousemove=null;
+}
+setTimeout(function(){
+antiRobot |= 1;
+antiRobotGo();
+}, 100)
+antiRobotGo();
+}
+antiRobotDefense();
+</script>
+
+<h2 align="center">Alphabetical List Of Documents</h2>
+
+
+<var class="rightsidebar border2px desktoponly">
+See Also:
+<ul>
+<li><a href="docs.htm">Categorical Document List</a>
+</li><li><a href="books.htm">Books About SQLite</a>
+</li><li><a href="sitemap.htm">Permuted Title Index</a>
+</li><li><a href="keyword_index.htm">Website Keyword Index</a>
+</li></ul>
+</var>
+
+<ol>
+<li><a href="fasterthanfs.htm">35% Faster Than The Filesystem</a></li>
+<li><a href="shortnames.htm">8+3 Filenames</a></li>
+<li><a href="about.htm">About SQLite</a></li>
+<li><a href="doclist.htm">Alphabetical List Of SQLite Documents</a></li>
+<li><a href="lang_altertable.htm">ALTER TABLE</a></li>
+<li><a href="asyncvfs.htm">An Asynchronous I/O Module For SQLite</a></li>
+<li><a href="cintro.htm">An Introduction To The SQLite C/C++ Interface</a></li>
+<li><a href="lang_analyze.htm">ANALYZE</a></li>
+<li><a href="https://sqlite.org/android/">Android Bindings</a></li>
+<li><a href="appfunc.htm">Application-Defined SQL Functions</a></li>
+<li><a href="whentouse.htm">Appropriate Uses For SQLite</a></li>
+<li><a href="arch.htm">Architecture of SQLite</a></li>
+<li><a href="atomiccommit.htm">Atomic Commit In SQLite</a></li>
+<li><a href="lang_attach.htm">ATTACH DATABASE</a></li>
+<li><a href="undoredo.htm">Automatic Undo/Redo With SQLite</a></li>
+<li><a href="aff_short.htm">Benefits of SQLite As A File Format</a></li>
+<li><a href="books.htm">Books About SQLite</a></li>
+<li><a href="lang_aggfunc.htm">Built-in Aggregate Functions</a></li>
+<li><a href="lang_mathfunc.htm">Built-In Mathematical SQL Functions</a></li>
+<li><a href="lang_corefunc.htm">Built-In Scalar SQL Functions</a></li>
+<li><a href="capi3ref.htm">C/C++ Interface For SQLite Version 3</a></li>
+<li><a href="capi3.htm">C/C++ Interface For SQLite Version 3 (old)</a></li>
+<li><a href="pgszchng2016.htm">Change in Default Page Size in SQLite Version 3.12.0</a></li>
+<li><a href="withoutrowid.htm">Clustered Indexes and the WITHOUT ROWID Optimization</a></li>
+<li><a href="cli.htm">Command Line Shell For SQLite</a></li>
+<li><a href="compile.htm">Compile-time Options</a></li>
+<li><a href="conflict.htm">Constraint Conflict Resolution in SQLite</a></li>
+<li><a href="lang_createindex.htm">CREATE INDEX</a></li>
+<li><a href="lang_createtable.htm">CREATE TABLE</a></li>
+<li><a href="lang_createtrigger.htm">CREATE TRIGGER</a></li>
+<li><a href="lang_createview.htm">CREATE VIEW</a></li>
+<li><a href="lang_createvtab.htm">CREATE VIRTUAL TABLE</a></li>
+<li><a href="custombuild.htm">Custom Builds Of SQLite</a></li>
+<li><a href="fileformat2.htm">Database File Format</a></li>
+<li><a href="lang_naming.htm">Database Object Name Resolution</a></li>
+<li><a href="rsync.htm">Database Remote-Copy Tool For SQLite</a></li>
+<li><a href="datatype3.htm">Datatypes In SQLite</a></li>
+<li><a href="datatypes.htm">Datatypes In SQLite version 2</a></li>
+<li><a href="lang_datefunc.htm">Date And Time Functions</a></li>
+<li><a href="security.htm">Defense Against The Dark Arts</a></li>
+<li><a href="lang_delete.htm">DELETE</a></li>
+<li><a href="lang_detach.htm">DETACH</a></li>
+<li><a href="deterministic.htm">Deterministic SQL Functions</a></li>
+<li><a href="different.htm">Distinctive Features Of SQLite</a></li>
+<li><a href="lang_dropindex.htm">DROP INDEX</a></li>
+<li><a href="lang_droptable.htm">DROP TABLE</a></li>
+<li><a href="lang_droptrigger.htm">DROP TRIGGER</a></li>
+<li><a href="lang_dropview.htm">DROP VIEW</a></li>
+<li><a href="malloc.htm">Dynamic Memory Allocation In SQLite</a></li>
+<li><a href="lang_explain.htm">EXPLAIN</a></li>
+<li><a href="eqp.htm">EXPLAIN QUERY PLAN</a></li>
+<li><a href="features.htm">Features Of SQLite</a></li>
+<li><a href="formatchng.htm">File Format Changes in SQLite</a></li>
+<li><a href="lockingv3.htm">File Locking And Concurrency In SQLite Version 3</a></li>
+<li><a href="floatingpoint.htm">Floating Point Numbers</a></li>
+<li><a href="fullsql.htm">Full-Featured SQL</a></li>
+<li><a href="gencol.htm">Generated Columns</a></li>
+<li><a href="hirely.htm">High Reliability</a></li>
+<li><a href="debugging.htm">Hints for Debugging SQLite</a></li>
+<li><a href="chronology.htm">History Of SQLite Releases</a></li>
+<li><a href="testing.htm">How SQLite Is Tested</a></li>
+<li><a href="howitworks.htm">How SQLite Works</a></li>
+<li><a href="howtocompile.htm">How To Compile SQLite</a></li>
+<li><a href="howtocorrupt.htm">How To Corrupt An SQLite Database File</a></li>
+<li><a href="getthecode.htm">How To Download Canonical SQLite Source Code</a></li>
+<li><a href="limits.htm">Implementation Limits For SQLite</a></li>
+<li><a href="imposter.htm">Imposter Tables</a></li>
+<li><a href="inmemorydb.htm">In-Memory Databases</a></li>
+<li><a href="expridx.htm">Indexes On Expressions</a></li>
+<li><a href="lang_insert.htm">INSERT</a></li>
+<li><a href="intern-v-extern-blob.htm">Internal Versus External BLOBs</a></li>
+<li><a href="invalidutf.htm">Invalid UTF Policy</a></li>
+<li><a href="isolation.htm">Isolation In SQLite</a></li>
+<li><a href="json1.htm">JSON Functions And Operators</a></li>
+<li><a href="syntax.htm">List of SQLite Syntax Diagrams</a></li>
+<li><a href="vtablist.htm">List Of Virtual Tables</a></li>
+<li><a href="locrsf.htm">LoC Recommended Storage Format</a></li>
+<li><a href="lts.htm">Long Term Support</a></li>
+<li><a href="privatebranch.htm">Maintaining Private Branches Of SQLite</a></li>
+<li><a href="np1queryprob.htm">Many Small Queries Are Efficient In SQLite</a></li>
+<li><a href="cpu.htm">Measuring and Reducing CPU Usage in SQLite</a></li>
+<li><a href="mmap.htm">Memory-Mapped I/O</a></li>
+<li><a href="mostdeployed.htm">Most Widely Deployed SQL Database Engine</a></li>
+<li><a href="nulinstr.htm">NUL Characters In Strings</a></li>
+<li><a href="nulls.htm">NULL Handling in SQLite</a></li>
+<li><a href="partialindex.htm">Partial Indexes</a></li>
+<li><a href="bindptr.htm">Pointer Passing Interfaces</a></li>
+<li><a href="psow.htm">Powersafe Overwrite</a></li>
+<li><a href="pragma.htm">Pragma statements supported by SQLite</a></li>
+<li><a href="profile.htm">Profiling SQL Queries</a></li>
+<li><a href="qmplan.htm">Quality Management</a></li>
+<li><a href="lang.htm">Query Language Understood by SQLite</a></li>
+<li><a href="queryplanner.htm">Query Planning</a></li>
+<li><a href="quirks.htm">Quirks, Caveats, and Gotchas In SQLite</a></li>
+<li><a href="news.htm">Recent SQLite News</a></li>
+<li><a href="recovery.htm">Recovering Data From A Corrupt SQLite Database</a></li>
+<li><a href="lang_reindex.htm">REINDEX</a></li>
+<li><a href="changes.htm">Release History Of SQLite</a></li>
+<li><a href="lang_replace.htm">REPLACE</a></li>
+<li><a href="rescode.htm">Result and Error Codes</a></li>
+<li><a href="lang_returning.htm">RETURNING</a></li>
+<li><a href="rowvalue.htm">Row Values</a></li>
+<li><a href="rowidtable.htm">Rowid Tables</a></li>
+<li><a href="loadext.htm">Run-Time Loadable Extensions</a></li>
+<li><a href="lang_savepoint.htm">Savepoints</a></li>
+<li><a href="lang_select.htm">SELECT</a></li>
+<li><a href="lang_comment.htm">SQL Comment Syntax</a></li>
+<li><a href="omitted.htm">SQL Features That SQLite Does Not Implement</a></li>
+<li><a href="lang_expr.htm">SQL Language Expressions</a></li>
+<li><a href="sqldiff.htm">sqldiff.exe: Database Difference Utility</a></li>
+<li><a href="sqlar.htm">SQLite Archive Files</a></li>
+<li><a href="https://sqlite.org/sqlar/">SQLite Archiver (sqlar.exe)</a></li>
+<li><a href="appfileformat.htm">SQLite As An Application File Format</a></li>
+<li><a href="autoinc.htm">SQLite Autoincrement</a></li>
+<li><a href="backup.htm">SQLite Backup API</a></li>
+<li><a href="34to35.htm">SQLite Changes From Version 3.4.2 To 3.5.0</a></li>
+<li><a href="35to36.htm">SQLite Changes From Version 3.5.9 To 3.6.0</a></li>
+<li><a href="consortium.htm">SQLite Consortium</a></li>
+<li><a href="copyright.htm">SQLite Copyright</a></li>
+<li><a href="speed.htm">SQLite Database Speed Comparison</a></li>
+<li><a href="crew.htm">SQLite Developers</a></li>
+<li><a href="docs.htm">SQLite Documentation</a></li>
+<li><a href="download.htm">SQLite Download Page</a></li>
+<li><a href="foreignkeys.htm">SQLite Foreign Key Support</a></li>
+<li><a href="faq.htm">SQLite Frequently Asked Questions</a></li>
+<li><a href="fts3.htm">SQLite FTS3 and FTS4 Extensions</a></li>
+<li><a href="fts5.htm">SQLite FTS5 Extension</a></li>
+<li><a href="index.htm">SQLite Home Page</a></li>
+<li><a href="quickstart.htm">SQLite In 5 Minutes Or Less</a></li>
+<li><a href="selfcontained.htm">SQLite is a Self Contained System</a></li>
+<li><a href="serverless.htm">SQLite Is Serverless</a></li>
+<li><a href="transactional.htm">SQLite Is Transactional</a></li>
+<li><a href="lang_keywords.htm">SQLite Keywords</a></li>
+<li><a href="footprint.htm">SQLite Library Footprint</a></li>
+<li><a href="oldnews.htm">SQLite Older News</a></li>
+<li><a href="useovernet.htm">SQLite Over a Network, Caveats and Considerations</a></li>
+<li><a href="prosupport.htm">SQLite Pro Support</a></li>
+<li><a href="requirements.htm">SQLite Requirements</a></li>
+<li><a href="session.htm">SQLite Session Module C/C++ Interface</a></li>
+<li><a href="sharedcache.htm">SQLite Shared-Cache Mode</a></li>
+<li><a href="sitemap.htm">SQLite Site Map</a></li>
+<li><a href="support.htm">SQLite Support Options</a></li>
+<li><a href="unlock_notify.htm">SQLite Unlock-Notify API</a></li>
+<li><a href="version3.htm">SQLite Version 3 Overview</a></li>
+<li><a href="printf.htm">SQLite's Built-in printf()</a></li>
+<li><a href="onefile.htm">SQLite: Single File Database</a></li>
+<li><a href="stricttables.htm">STRICT Tables</a></li>
+<li><a href="swarmvtab.htm">Swarmvtab Virtual Table</a></li>
+<li><a href="syntaxdiagrams.htm">Syntax Diagrams For SQLite</a></li>
+<li><a href="https://system.data.sqlite.org/">System.Data.SQLite</a></li>
+<li><a href="tempfiles.htm">Temporary Files Used By SQLite</a></li>
+<li><a href="th3.htm">TH3</a></li>
+<li><a href="flextypegood.htm">The Advantages Of Flexible Typing</a></li>
+<li><a href="amalg-v-canon.htm">The Amalgamation Versus Canonical Sources</a></li>
+<li><a href="base64.htm">The Base64() SQL Function</a></li>
+<li><a href="base85.htm">The Base85() SQL Function</a></li>
+<li><a href="bytecodevtab.htm">The Bytecode() And Tables_Used() Table-Valued Functions</a></li>
+<li><a href="c_interface.htm">The C language interface to SQLite Version 2</a></li>
+<li><a href="carray.htm">The Carray() Table-Valued Function</a></li>
+<li><a href="cksumvfs.htm">The Checksum VFS Shim</a></li>
+<li><a href="completion.htm">The COMPLETION() Table-Valued Function</a></li>
+<li><a href="csv.htm">The CSV Virtual Table</a></li>
+<li><a href="dbhash.htm">The dbhash.exe Utility Program</a></li>
+<li><a href="dbstat.htm">The DBSTAT Virtual Table</a></li>
+<li><a href="errlog.htm">The Error And Warning Log</a></li>
+<li><a href="https://www.fossil-scm.org/">The Fossil Version Control System</a></li>
+<li><a href="series.htm">The generate_series Table-Valued Function</a></li>
+<li><a href="geopoly.htm">The Geopoly Interface To The SQLite R*Tree Module</a></li>
+<li><a href="lang_indexedby.htm">The INDEXED BY Clause</a></li>
+<li><a href="lemon.htm">The Lemon LALR(1) Parser Generator</a></li>
+<li><a href="queryplanner-ng.htm">The Next-Generation Query Planner</a></li>
+<li><a href="lang_conflict.htm">The ON CONFLICT Clause</a></li>
+<li><a href="percentile.htm">The Percentile Extension</a></li>
+<li><a href="rbu.htm">The RBU Extension</a></li>
+<li><a href="schematab.htm">The Schema Table</a></li>
+<li><a href="sessionintro.htm">The Session Extension</a></li>
+<li><a href="spellfix1.htm">The Spellfix1 Virtual Table</a></li>
+<li><a href="amalgamation.htm">The SQLite Amalgamation</a></li>
+<li><a href="opcode.htm">The SQLite Bytecode Engine</a></li>
+<li><a href="vfs.htm">The SQLite OS Interface or "VFS"</a></li>
+<li><a href="optoverview.htm">The SQLite Query Optimizer Overview</a></li>
+<li><a href="rtree.htm">The SQLite R*Tree Module</a></li>
+<li><a href="zipfile.htm">The SQLite Zipfile Module</a></li>
+<li><a href="sqlanalyze.htm">The sqlite3_analyzer.exe Utility Program</a></li>
+<li><a href="dbpage.htm">The SQLITE_DBPAGE Virtual Table</a></li>
+<li><a href="memstat.htm">The SQLITE_MEMSTAT Virtual Table</a></li>
+<li><a href="stmt.htm">The SQLITE_STMT Virtual Table</a></li>
+<li><a href="tclsqlite.htm">The Tcl interface to the SQLite library</a></li>
+<li><a href="uintcseq.htm">The UINT Collating Sequence</a></li>
+<li><a href="unionvtab.htm">The UNION Virtual Table</a></li>
+<li><a href="assert.htm">The Use Of assert() In SQLite</a></li>
+<li><a href="vdbe.htm">The Virtual Database Engine of SQLite</a></li>
+<li><a href="vtab.htm">The Virtual Table Mechanism Of SQLite</a></li>
+<li><a href="lang_with.htm">The WITH Clause</a></li>
+<li><a href="lang_transaction.htm">Transaction</a></li>
+<li><a href="uri.htm">Uniform Resource Identifiers</a></li>
+<li><a href="lang_update.htm">UPDATE</a></li>
+<li><a href="lang_upsert.htm">UPSERT</a></li>
+<li><a href="threadsafe.htm">Using SQLite In Multi-Threaded Applications</a></li>
+<li><a href="lang_vacuum.htm">VACUUM</a></li>
+<li><a href="versionnumbers.htm">Version Numbers in SQLite</a></li>
+<li><a href="cves.htm">Vulnerabilities</a></li>
+<li><a href="walformat.htm">WAL-mode File Format</a></li>
+<li><a href="keyword_index.htm">Website Keyword Index</a></li>
+<li><a href="famous.htm">Well-Known Users Of SQLite</a></li>
+<li><a href="affcase1.htm">What If OpenDocument Used SQLite?</a></li>
+<li><a href="whyc.htm">Why Is SQLite Coded In C</a></li>
+<li><a href="whynotgit.htm">Why SQLite Does Not Use Git</a></li>
+<li><a href="whybytecode.htm">Why SQLite Uses Bytecode</a></li>
+<li><a href="windowfunctions.htm">Window Functions</a></li>
+<li><a href="wal.htm">Write-Ahead Logging</a></li>
+<li><a href="zeroconf.htm">Zero-Configuration</a></li>
+
+</ol>
+
+
+</body></html>

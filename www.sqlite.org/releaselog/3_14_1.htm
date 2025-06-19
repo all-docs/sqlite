@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>SQLite Release 3.14.1 On 2016-08-11</title>
+<!-- path=../ -->
+</head>
+<body>
+
+<script>
+function toggle_div(nm) {
+var w = document.getElementById(nm);
+if( w.style.display=="block" ){
+w.style.display = "none";
+}else{
+w.style.display = "block";
+}
+}
+function toggle_search() {
+var w = document.getElementById("searchmenu");
+if( w.style.display=="block" ){
+w.style.display = "none";
+} else {
+w.style.display = "block";
+setTimeout(function(){
+document.getElementById("searchbox").focus()
+}, 30);
+}
+}
+function div_off(nm){document.getElementById(nm).style.display="none";}
+window.onbeforeunload = function(e){div_off("submenu");}
+/* Disable the Search feature if we are not operating from CGI, since */
+/* Search is accomplished using CGI and will not work without it. */
+if( !location.origin || !location.origin.match || !location.origin.match(/http/) ){
+document.getElementById("search_menubutton").style.display = "none";
+}
+/* Used by the Hide/Show button beside syntax diagrams, to toggle the */
+function hideorshow(btn,obj){
+var x = document.getElementById(obj);
+var b = document.getElementById(btn);
+if( x.style.display!='none' ){
+x.style.display = 'none';
+b.innerHTML='show';
+}else{
+x.style.display = '';
+b.innerHTML='hide';
+}
+return false;
+}
+var antiRobot = 0;
+function antiRobotGo(){
+if( antiRobot!=3 ) return;
+antiRobot = 7;
+var j = document.getElementById("mtimelink");
+if(j && j.hasAttribute("data-href")) j.href=j.getAttribute("data-href");
+}
+function antiRobotDefense(){
+document.body.onmousedown=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousedown=null;
+}
+document.body.onmousemove=function(){
+antiRobot |= 2;
+antiRobotGo();
+document.body.onmousemove=null;
+}
+setTimeout(function(){
+antiRobot |= 1;
+antiRobotGo();
+}, 100)
+antiRobotGo();
+}
+antiRobotDefense();
+</script>
+<h2>SQLite Release 3.14.1 On 2016-08-11</h2><p><b>Prior changes from version 3.14 (2016-08-08):</b></p>
+<p></p><ol class="lessindent">
+<div style="width:280px;float:right;padding:10px;margin:0px 10px;">
+<img src="../images/sqlitepie.jpg" width="280" height="250"><br>
+<center>Celebrating the SQLite "<big>π</big> release"
+with a home-baked pie.</center>
+</div>
+<li value="1">Added support for <a href="../vtab.html#worid">WITHOUT ROWID virtual tables</a>.
+</li><li>Improved the query planner so that the <a href="../optoverview.html#or_opt">OR optimization</a> can
+    be used on <a href="../vtab.html">virtual tables</a> even if one or more of the disjuncts
+    use the <a href="../lang_expr.html#like">LIKE</a>, <a href="../lang_expr.html#glob">GLOB</a>, <a href="../lang_expr.html#regexp">REGEXP</a>, <a href="../lang_expr.html#match">MATCH</a> operators.
+</li><li>Added the <a href="../csv.html">CSV virtual table</a> for reading
+    <a href="https://www.ietf.org/rfc/rfc4180.txt">RFC 4180</a> formatted comma-separated
+    value files.
+</li><li>Added the <a href="../carray.html">carray() table-valued function</a> extension.
+</li><li>Enabled <a href="../loadext.html#persist">persistent loadable extensions</a> using the new
+    <a href="../rescode.html#ok_load_permanently">SQLITE_OK_LOAD_PERMANENTLY</a> return code from the extension
+    entry point.
+</li><li>Added the <a href="../c3ref/c_dbstatus_options.html#sqlitedbstatuscacheusedshared">SQLITE_DBSTATUS_CACHE_USED_SHARED</a> option to <a href="../c3ref/db_status.html">sqlite3_db_status()</a>.
+</li><li>Add the
+    <a href="https://sqlite.org/src/artifact?ci=trunk&amp;filename=ext/misc/vfsstat.c">vfsstat.c</a>
+    loadable extension - a VFS shim that measures I/O
+    together with an <a href="../vtab.html#epovtab">eponymous virtual table</a> that provides access to the measurements.
+</li><li>Improved algorithm for running queries with both an ORDER BY and a LIMIT where
+    only the inner-most loop naturally generates rows in the correct order.
+</li><li>Enhancements to <a href="../lemon.html">Lemon parser generator</a>, so that it generates a
+    faster parser.
+</li><li>The <a href="../pragma.html#pragma_compile_options">PRAGMA compile_options</a> command now attempts to show the version number
+    of the compiler that generated the library.
+</li><li>Enhance <a href="../pragma.html#pragma_table_info">PRAGMA table_info</a> so that it provides information about
+    <a href="../vtab.html#epovtab">eponymous virtual tables</a>.
+</li><li>Added the "win32-none" VFS, analogous to the "unix-none" VFS, that works like
+    the default "win32" VFS except that it ignores all file locks.
+</li><li>The query planner uses a full scan of a <a href="../partialindex.html">partial index</a> instead of a
+    full scan of the main table, in cases where that makes sense.
+</li><li>Allow <a href="../vtab.html#tabfunc2">table-valued functions</a> to appear on the right-hand side of an <a href="../lang_expr.html#in_op">IN operator</a>.
+</li><li>Created the <a href="../dbhash.html">dbhash.exe</a> command-line utility.
+</li><li>Added two new C-language interfaces: <a href="../c3ref/expanded_sql.html">sqlite3_expanded_sql()</a> and
+    <a href="../c3ref/trace_v2.html">sqlite3_trace_v2()</a>.  These new interfaces subsume the functions of
+    <a href="../c3ref/profile.html">sqlite3_trace()</a> and <a href="../c3ref/profile.html">sqlite3_profile()</a> which are now deprecated.
+</li><li>Added the <a href="../json1.html#jquote">json_quote()</a> SQL function to <a href="../json1.html">the json1 extension</a>.
+</li><li>Disable the <a href="../c3ref/set_authorizer.html">authorizer callback</a> while reparsing the schema.
+</li><li>Added the <a href="../compile.html#enable_unknown_sql_function">SQLITE_ENABLE_UNKNOWN_SQL_FUNCTION</a> compile-time option and turned that
+    option on by default when building the <a href="../cli.html">command-line shell</a>.
+<p><b>Bug Fixes:</b>
+</p></li><li>Fix the <a href="../lang_altertable.html">ALTER TABLE</a> command so that it does not corrupt <a href="../lang_createindex.html#descidx">descending indexes</a>
+    when adding a column to a <a href="../pragma.html#pragma_legacy_file_format">legacy file format</a> database.  Ticket
+    <a href="https://sqlite.org/src/info/f68bf68513a1c15f">f68bf68513a1c15f</a>
+</li><li>Fix a NULL-pointer dereference/crash that could occurs when a transitive WHERE
+    clause references a non-existent collating sequence.  Ticket
+    <a href="https://sqlite.org/src/info/e8d439c77685eca6">e8d439c77685eca6</a>.
+</li><li>Improved the cost estimation for an index scan which includes a WHERE clause
+    that can be partially or fully evaluated using columns in the index and without
+    having to do a table lookup.  This fixes a performance regression that occurred
+    for some obscure queries following the ORDER BY LIMIT optimization introduced
+    in <a href="3_12_0.htm">version 3.12.0</a>.
+</li></ol>
+<p><b>Changes in this specific patch release, version 3.14.1 (2016-08-11):</b></p>
+<p></p><ol class="lessindent">
+<li value="23">A performance enhancement to the page-cache "truncate" operation
+    reduces <a href="../lang_transaction.html">COMMIT</a> time by dozens of milliseconds on systems with a
+    large <a href="../pragma.html#pragma_cache_size">page cache</a>.
+</li><li>Fix to the --rbu option of <a href="../sqldiff.html">sqldiff</a>.
+<p><b>Hashes:</b>
+</p></li><li>SQLITE_SOURCE_ID: "2016-08-11 18:53:32 a12d8059770df4bca59e321c266410344242bf7b"
+</li><li>SHA1 for sqlite3.c: d545b24892278272ce4e40e0567d69c8babf12ea
+
+</li></ol><p></p>
+
+      <p>A <a href="../changes.html">complete list of SQLite releases</a>
+      in a single page and a <a href="../chronology.html">chronology</a> are both also available.
+      A detailed history of every
+      check-in is available at
+      <a href="https://sqlite.org/src/timeline">
+      SQLite version control site</a>.</p>
+    
+
+</body></html>
